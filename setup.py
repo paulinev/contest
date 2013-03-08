@@ -70,6 +70,12 @@ def run_cellsim(LTE):
     LTE.waitOutput()
     LTE.sendCmd('/home/ubuntu/multisend/sender/cellsim-runner.sh')
     LTE.waitOutput()
+    
+def run_sprout(sender, receiver):
+    sender.sendCmd('/home/ubuntu/alfalfa/src/examples/sproutbt2 ./sproutbt2')
+    sender.waitOutput()
+    receiver.sendCmd('/home/ubuntu/alfalfa/src/examples/sproutbt2 ./sproutbt2 server_address 60001')
+    receiver.waitOutput()
 
 def test_cellsim():
     topo = ProtoTester()
